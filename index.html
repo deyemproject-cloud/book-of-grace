@@ -51,6 +51,7 @@
         // Navigation Component
         const Navigation = () => {
             const [scrolled, setScrolled] = useState(false);
+            const [menuOpen, setMenuOpen] = useState(false);
             
             useEffect(() => {
                 const handleScroll = () => setScrolled(window.scrollY > 100);
@@ -58,63 +59,122 @@
                 return () => window.removeEventListener('scroll', handleScroll);
             }, []);
 
+            const navLinks = ['Collezione', 'Artigianato', 'Fede', 'Contatti'];
+
             return (
-                <motion.nav
-                    initial={{ y: -100 }}
-                    animate={{ y: 0 }}
-                    transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                    style={{
-                        position: 'fixed',
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        zIndex: 100,
-                        padding: scrolled ? '1rem 3rem' : '2rem 3rem',
-                        background: scrolled ? 'rgba(250, 248, 245, 0.95)' : 'transparent',
-                        backdropFilter: scrolled ? 'blur(10px)' : 'none',
-                        transition: 'all 0.4s ease',
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'center'
-                    }}
-                >
-                    <motion.a 
-                        href="#" 
-                        className="serif"
+                <>
+                    <motion.nav
+                        initial={{ y: -100 }}
+                        animate={{ y: 0 }}
+                        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                         style={{
-                            fontSize: '1.5rem',
-                            fontWeight: 400,
-                            color: 'var(--dark)',
-                            textDecoration: 'none',
-                            letterSpacing: '0.1em'
+                            position: 'fixed',
+                            top: 0,
+                            left: 0,
+                            right: 0,
+                            zIndex: 100,
+                            padding: scrolled ? '0.75rem 2rem' : '1.25rem 2rem',
+                            background: scrolled ? 'rgba(250, 248, 245, 0.98)' : 'transparent',
+                            backdropFilter: scrolled ? 'blur(20px)' : 'none',
+                            transition: 'all 0.4s ease',
+                            boxShadow: scrolled ? '0 2px 20px rgba(44,36,25,0.08)' : 'none'
                         }}
-                        whileHover={{ scale: 1.02 }}
                     >
-                        Book of Grace
-                    </motion.a>
-                    <div style={{ display: 'flex', gap: '2.5rem', alignItems: 'center' }}>
-                        {['Collezione', 'Artigianato', 'Fede', 'Contatti'].map((item, i) => (
-                            <motion.a
-                                key={item}
-                                href={`#${item.toLowerCase()}`}
+                        <div style={{
+                            maxWidth: '1400px',
+                            margin: '0 auto',
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            alignItems: 'center'
+                        }}>
+                            {/* Logo */}
+                            <motion.a 
+                                href="#" 
+                                className="serif"
                                 style={{
-                                    fontSize: '0.8rem',
+                                    fontSize: scrolled ? '1.1rem' : '1.25rem',
+                                    fontWeight: 400,
+                                    color: scrolled ? 'var(--dark)' : 'var(--cream)',
+                                    textDecoration: 'none',
+                                    letterSpacing: '0.15em',
+                                    transition: 'all 0.4s ease'
+                                }}
+                                whileHover={{ scale: 1.02 }}
+                            >
+                                Book of Grace
+                            </motion.a>
+
+                            {/* Desktop Menu */}
+                            <div style={{ 
+                                display: 'flex', 
+                                gap: '2rem', 
+                                alignItems: 'center'
+                            }}>
+                                {navLinks.map((item, i) => (
+                                    <motion.a
+                                        key={item}
+                                        href={`#${item.toLowerCase()}`}
+                                        style={{
+                                            fontSize: '0.75rem',
+                                            letterSpacing: '0.15em',
+                                            textTransform: 'uppercase',
+                                            color: scrolled ? 'var(--charcoal)' : 'var(--cream)',
+                                            textDecoration: 'none',
+                                            fontWeight: 400,
+                                            padding: '0.5rem 0',
+                                            position: 'relative',
+                                            transition: 'color 0.3s ease'
+                                        }}
+                                        initial={{ opacity: 0, y: -10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 0.1 * i + 0.3 }}
+                                        whileHover={{ color: 'var(--tan)' }}
+                                    >
+                                        {item}
+                                        <motion.span
+                                            style={{
+                                                position: 'absolute',
+                                                bottom: 0,
+                                                left: 0,
+                                                right: 0,
+                                                height: '1px',
+                                                background: 'var(--tan)',
+                                                transform: 'scaleX(0)',
+                                                transformOrigin: 'left'
+                                            }}
+                                            whileHover={{ scaleX: 1 }}
+                                            transition={{ duration: 0.3 }}
+                                        />
+                                    </motion.a>
+                                ))}
+                            </div>
+
+                            {/* CTA Button */}
+                            <motion.a
+                                href="https://www.vinted.it/member/209292782-bookofgrace"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={{
+                                    padding: '0.6rem 1.5rem',
+                                    background: scrolled ? 'var(--dark)' : 'transparent',
+                                    color: 'var(--cream)',
+                                    border: scrolled ? 'none' : '1px solid var(--cream)',
+                                    textDecoration: 'none',
+                                    fontSize: '0.7rem',
                                     letterSpacing: '0.15em',
                                     textTransform: 'uppercase',
-                                    color: 'var(--charcoal)',
-                                    textDecoration: 'none',
-                                    fontWeight: 400
+                                    transition: 'all 0.3s ease'
                                 }}
-                                initial={{ opacity: 0, y: -10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.1 * i + 0.3 }}
-                                whileHover={{ color: 'var(--tan)' }}
+                                whileHover={{ 
+                                    background: 'var(--tan)',
+                                    borderColor: 'var(--tan)'
+                                }}
                             >
-                                {item}
+                                Acquista
                             </motion.a>
-                        ))}
-                    </div>
-                </motion.nav>
+                        </div>
+                    </motion.nav>
+                </>
             );
         };
 
