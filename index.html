@@ -58,13 +58,13 @@
         const { useState, useEffect, useRef } = React;
         const { motion, useScroll, useTransform, AnimatePresence } = window.Motion;
 
-        // Image URLs from Unsplash - leather crafting themed
+        // Images from Instagram screenshots
         const images = {
-            hero: "https://images.unsplash.com/photo-1559563458-527698bf5295?w=1920&q=80",
-            bible: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800&q=80",
-            leather: "https://images.unsplash.com/photo-1605518216938-7c31b7b14ad0?w=800&q=80",
-            wood: "https://images.unsplash.com/photo-1589216532372-1c2a367900d9?w=800&q=80",
-            workshop: "https://images.unsplash.com/photo-1537204696486-967f1b7198c8?w=1200&q=80"
+            hero: "./instagram-profile.jpg",
+            product1: "./instagram-products.jpg",
+            product2: "./instagram-products.jpg",
+            product3: "./instagram-products.jpg",
+            workshop: "./instagram-profile.jpg"
         };
 
         // Navigation Component
@@ -401,9 +401,9 @@
         // Collection Section
         const Collection = () => {
             const products = [
-                { name: "Copertine per Bibbie", price: "Su misura", image: images.bible, desc: "Protezione elegante per la Parola" },
-                { name: "Cover per Agende", price: "Personalizzate", image: images.leather, desc: "Organizzazione con stile" },
-                { name: "Creazioni in Legno", price: "Artigianali", image: images.wood, desc: "Calore naturale della materia" }
+                { name: "Borsa in Pelle Dipinta", price: "Su ordinazione", image: images.product1, position: "left", desc: "Arte e fede in un accessorio unico" },
+                { name: "Copertine per Bibbie", price: "Personalizzate", image: images.product2, position: "center", desc: "Protezione elegante per la Parola" },
+                { name: "Cover per Agende", price: "Su misura", image: images.product3, position: "right", desc: "Organizzazione con stile" }
             ];
 
             return (
@@ -440,7 +440,8 @@
                                         style={{
                                             width: '100%',
                                             height: '100%',
-                                            objectFit: 'cover'
+                                            objectFit: 'cover',
+                                            objectPosition: product.position === 'left' ? '0% 35%' : product.position === 'center' ? '50% 35%' : '100% 35%'
                                         }}
                                         whileHover={{ scale: 1.05 }}
                                         transition={{ duration: 0.6 }}
@@ -591,11 +592,12 @@
                             >
                                 <img
                                     src={images.workshop}
-                                    alt="Artigianato"
+                                    alt="Book of Grace - Artigianato"
                                     style={{
                                         width: '100%',
                                         height: '100%',
-                                        objectFit: 'cover'
+                                        objectFit: 'cover',
+                                        objectPosition: 'top center'
                                     }}
                                 />
                                 <div style={{
