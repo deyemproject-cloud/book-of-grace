@@ -60,10 +60,10 @@
 
         // Images from Instagram screenshots
         const images = {
-            hero: "./instagram-profile.jpg",
-            product1: "./instagram-products.jpg",
-            product2: "./instagram-products.jpg",
-            product3: "./instagram-products.jpg",
+            hero: "./hero.jpg",
+            product1: "./product-1.jpg",
+            product2: "./product-2.jpg",
+            product3: "./product-3.jpg",
             workshop: "./instagram-profile.jpg"
         };
 
@@ -430,7 +430,7 @@
                                 }}
                             >
                                 <div style={{
-                                    aspectRatio: '4/5',
+                                    aspectRatio: '1/1',
                                     overflow: 'hidden',
                                     position: 'relative'
                                 }}>
@@ -440,8 +440,7 @@
                                         style={{
                                             width: '100%',
                                             height: '100%',
-                                            objectFit: 'cover',
-                                            objectPosition: product.position === 'left' ? '0% 35%' : product.position === 'center' ? '50% 35%' : '100% 35%'
+                                            objectFit: 'cover'
                                         }}
                                         whileHover={{ scale: 1.05 }}
                                         transition={{ duration: 0.6 }}
