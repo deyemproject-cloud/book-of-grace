@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book of Grace | Artigianato in Pelle</title>
+    <title>Book of Grace | Quando la fede si sposa con l'arte</title>
     <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -42,11 +42,10 @@
         // Image URLs from Unsplash - leather crafting themed
         const images = {
             hero: "https://images.unsplash.com/photo-1559563458-527698bf5295?w=1920&q=80",
-            craft1: "https://images.unsplash.com/photo-1605518216938-7c31b7b14ad0?w=800&q=80",
-            craft2: "https://images.unsplash.com/photo-1547949003-9792a18a2601?w=800&q=80",
-            craft3: "https://images.unsplash.com/photo-1627123424574-724758594e93?w=800&q=80",
-            leather: "https://images.unsplash.com/photo-1537204696486-967f1b7198c8?w=1200&q=80",
-            nonnaGraziella: "./nonna-graziella.jpg" // Placeholder for user's photo
+            bible: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800&q=80",
+            leather: "https://images.unsplash.com/photo-1605518216938-7c31b7b14ad0?w=800&q=80",
+            wood: "https://images.unsplash.com/photo-1589216532372-1c2a367900d9?w=800&q=80",
+            workshop: "https://images.unsplash.com/photo-1537204696486-967f1b7198c8?w=1200&q=80"
         };
 
         // Navigation Component
@@ -94,7 +93,7 @@
                         Book of Grace
                     </motion.a>
                     <div style={{ display: 'flex', gap: '2.5rem', alignItems: 'center' }}>
-                        {['Collezione', 'Artigianato', 'Storia', 'Contatti'].map((item, i) => (
+                        {['Collezione', 'Artigianato', 'Fede', 'Contatti'].map((item, i) => (
                             <motion.a
                                 key={item}
                                 href={`#${item.toLowerCase()}`}
@@ -168,7 +167,7 @@
                                 fontWeight: 300
                             }}
                         >
-                            Artigianato Italiano dal 1965
+                            Genesi 1:1
                         </motion.p>
                         <motion.h1
                             className="serif"
@@ -192,12 +191,13 @@
                             style={{
                                 fontSize: '1.1rem',
                                 fontWeight: 300,
-                                maxWidth: '400px',
+                                maxWidth: '500px',
                                 margin: '0 auto',
-                                lineHeight: 1.8
+                                lineHeight: 1.8,
+                                fontStyle: 'italic'
                             }}
                         >
-                            Dove ogni pezzo racconta una storia di passione, tradizione e maestria artigiana
+                            "Quando la fede si sposa con l'arte"
                         </motion.p>
                     </motion.div>
 
@@ -259,14 +259,14 @@
         // Collection Section
         const Collection = () => {
             const products = [
-                { name: "Borsa Tote Classica", price: "€285", image: images.craft1 },
-                { name: "Portafoglio Elegance", price: "€95", image: images.craft2 },
-                { name: "Cintura Artigianale", price: "€125", image: images.craft3 }
+                { name: "Copertine per Bibbie", price: "Su misura", image: images.bible, desc: "Protezione elegante per la Parola" },
+                { name: "Cover per Agende", price: "Personalizzate", image: images.leather, desc: "Organizzazione con stile" },
+                { name: "Creazioni in Legno", price: "Artigianali", image: images.wood, desc: "Calore naturale della materia" }
             ];
 
             return (
                 <section id="collezione" style={{ padding: '8rem 3rem', maxWidth: '1400px', margin: '0 auto' }}>
-                    <SectionHeader subtitle="La Collezione" title="Pezzi Unici, Storie Eterne" />
+                    <SectionHeader subtitle="La Collezione" title="Creazioni che Uniscono Fede e Arte" />
                     
                     <div style={{
                         display: 'grid',
@@ -315,6 +315,14 @@
                                     </h3>
                                     <p style={{
                                         fontSize: '0.9rem',
+                                        color: 'var(--charcoal)',
+                                        marginBottom: '0.5rem',
+                                        fontStyle: 'italic'
+                                    }}>
+                                        {product.desc}
+                                    </p>
+                                    <p style={{
+                                        fontSize: '0.85rem',
                                         color: 'var(--tan)',
                                         letterSpacing: '0.1em'
                                     }}>
@@ -331,10 +339,10 @@
         // Craftsmanship Section
         const Craftsmanship = () => {
             const steps = [
-                { num: "01", title: "Selezione", desc: "Solo le migliori pelli italiane, conciate al vegetale" },
-                { num: "02", title: "Taglio", desc: "Ogni pezzo tagliato a mano con precisione millimetrica" },
-                { num: "03", title: "Cucitura", desc: "Punti a sella tradizionali, resistenti nel tempo" },
-                { num: "04", title: "Finitura", desc: "Cera d'api e olio di cocco per una pelle che invecchia con grazia" }
+                { num: "01", title: "Preghiera", desc: "Ogni creazione inizia con un momento di riflessione" },
+                { num: "02", title: "Selezione", desc: "Materiali di qualità, scelti con cura" },
+                { num: "03", title: "Lavorazione", desc: "Taglio e cucitura manuali, amore per il dettaglio" },
+                { num: "04", title: "Benedizione", desc: "Ogni pezzo viene benedetto prima di partire" }
             ];
 
             return (
@@ -380,9 +388,9 @@
                                     lineHeight: 1.8,
                                     marginBottom: '3rem'
                                 }}>
-                                    Ogni creazione Book of Grace è il risultato di ore di lavoro manuale, 
-                                    tecniche tramandate di generazione in generazione e un amore incondizionato 
-                                    per il dettaglio.
+                                    Ogni creazione Book of Grace è il risultato di un processo 
+                                    che unisce maestria artigiana e profonda fede. Non creiamo 
+                                    semplici oggetti, ma strumenti che accompagnano il cammino spirituale.
                                 </p>
                                 
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
@@ -440,8 +448,8 @@
                                 }}
                             >
                                 <img
-                                    src={images.leather}
-                                    alt="Artigianato in pelle"
+                                    src={images.workshop}
+                                    alt="Artigianato"
                                     style={{
                                         width: '100%',
                                         height: '100%',
@@ -460,120 +468,61 @@
             );
         };
 
-        // Story Section with Nonna Graziella
-        const Story = () => {
+        // Faith Section
+        const Faith = () => {
             return (
-                <section id="storia" style={{ padding: '8rem 3rem', maxWidth: '1400px', margin: '0 auto' }}>
-                    <div style={{
-                        display: 'grid',
-                        gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
-                        gap: '4rem',
-                        alignItems: 'center'
-                    }}>
-                        <motion.div
-                            initial={{ opacity: 0, x: -50 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8 }}
-                            style={{
-                                position: 'relative',
-                                aspectRatio: '4/5',
-                                background: 'var(--warm-white)',
-                                overflow: 'hidden'
-                            }}
-                        >
-                            <img
-                                src={images.nonnaGraziella}
-                                alt="Nonna Graziella"
-                                style={{
-                                    width: '100%',
-                                    height: '100%',
-                                    objectFit: 'cover',
-                                    filter: 'sepia(20%)'
-                                }}
-                                onError={(e) => {
-                                    e.target.src = images.craft1;
-                                    e.target.style.opacity = '0.5';
-                                }}
-                            />
-                            <div style={{
-                                position: 'absolute',
-                                bottom: 0,
-                                left: 0,
-                                right: 0,
-                                padding: '2rem',
-                                background: 'linear-gradient(to top, rgba(44,36,25,0.9), transparent)',
-                                color: 'var(--cream)'
-                            }}>
-                                <p className="serif" style={{
-                                    fontSize: '1.5rem',
-                                    fontStyle: 'italic',
-                                    fontWeight: 300
-                                }}>
-                                    Nonna Graziella
-                                </p>
-                                <p style={{
-                                    fontSize: '0.75rem',
-                                    letterSpacing: '0.2em',
-                                    textTransform: 'uppercase',
-                                    opacity: 0.7,
-                                    marginTop: '0.5rem'
-                                }}>
-                                    Fondatrice, 1965
-                                </p>
-                            </div>
-                        </motion.div>
-
-                        <motion.div
-                            initial={{ opacity: 0, x: 50 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8 }}
-                        >
-                            <p style={{
-                                fontSize: '0.7rem',
-                                letterSpacing: '0.3em',
-                                textTransform: 'uppercase',
-                                color: 'var(--tan)',
-                                marginBottom: '1rem'
-                            }}>
-                                La Nostra Storia
-                            </p>
-                            <h2 className="serif" style={{
-                                fontSize: 'clamp(2rem, 4vw, 3rem)',
-                                fontWeight: 400,
-                                marginBottom: '2rem',
-                                lineHeight: 1.2,
-                                color: 'var(--dark)'
-                            }}>
-                                Una Storia di Passione e Tradizione
-                            </h2>
-                            <div style={{
-                                fontSize: '1rem',
-                                lineHeight: 1.9,
-                                color: 'var(--charcoal)',
-                                fontWeight: 300
-                            }}>
-                                <p style={{ marginBottom: '1.5rem' }}>
-                                    Tutto ebbe inizio nel 1965, quando nonna Graziella, con le sue mani abili 
-                                    e un sogno nel cuore, aprì il suo piccolo laboratorio nel cuore della Toscana. 
-                                    Armata di un ago, del filo di sua madre e di una passione sconfinata per 
-                                    l'artigianato di qualità, diede vita a ciò che oggi è Book of Grace.
-                                </p>
-                                <p style={{ marginBottom: '1.5rem' }}>
-                                    Il nome nasce dalla sua fede: ogni pezzo che creava era per lei un atto di 
-                                    gratitudine, un modo per celebrare la grazia divisa nelle piccole cose 
-                                    quotidiane. "La vera bellezza", diceva spesso, "sta nella pazienza e nell'amore 
-                                    che mettiamo in ciò che facciamo."
-                                </p>
-                                <p>
-                                    Oggi, a quasi sessant'anni di distanza, portiamo avanti il suo sogno 
-                                    con la stessa dedizione. Ogni borsa, ogni portafoglio, ogni cintura 
-                                    porta con sé un pezzo della sua anima generosa e della sua arte senza tempo.
-                                </p>
-                            </div>
-                        </motion.div>
-                    </div>
+                <section id="fede" style={{ padding: '8rem 3rem', maxWidth: '1000px', margin: '0 auto', textAlign: 'center' }}>
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                    >
+                        <p style={{
+                            fontSize: '0.7rem',
+                            letterSpacing: '0.3em',
+                            textTransform: 'uppercase',
+                            color: 'var(--tan)',
+                            marginBottom: '2rem'
+                        }}>
+                            La Nostra Fede
+                        </p>
+                        
+                        <blockquote className="serif" style={{
+                            fontSize: 'clamp(1.5rem, 3vw, 2.5rem)',
+                            fontStyle: 'italic',
+                            fontWeight: 400,
+                            lineHeight: 1.5,
+                            color: 'var(--dark)',
+                            marginBottom: '2rem'
+                        }}>
+                            "Nel principio Dio creò i cieli e la terra."
+                        </blockquote>
+                        
+                        <p style={{
+                            fontSize: '0.9rem',
+                            letterSpacing: '0.2em',
+                            textTransform: 'uppercase',
+                            color: 'var(--tan)',
+                            marginBottom: '3rem'
+                        }}>
+                            Genesi 1:1
+                        </p>
+                        
+                        <p style={{
+                            fontSize: '1rem',
+                            lineHeight: 1.9,
+                            color: 'var(--charcoal)',
+                            fontWeight: 300,
+                            maxWidth: '700px',
+                            margin: '0 auto'
+                        }}>
+                            Crediamo che ogni atto creativo sia un riflesso dell'atto creativo divino. 
+                            Quando lavoriamo la pelle e il legno con le nostre mani, sentiamo di partecipare 
+                            al continuo atto della creazione. Ogni copertina per Bibbia, ogni agenda, 
+                            ogni accessorio nasce da questo sentimento di connessione con qualcosa di più grande.
+                        </p>
+                    </motion.div>
                 </section>
             );
         };
@@ -586,7 +535,7 @@
                     background: 'var(--warm-white)'
                 }}>
                     <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
-                        <SectionHeader subtitle="Contattaci" title="Inizia la Tua Storia" />
+                        <SectionHeader subtitle="Contattaci" title="Inizia il Tuo Progetto" />
                         
                         <motion.div
                             initial={{ opacity: 0, y: 30 }}
@@ -602,9 +551,8 @@
                                 fontWeight: 300,
                                 marginBottom: '2rem'
                             }}>
-                                Ogni creazione su misura inizia con una conversazione. 
-                                Raccontaci la tua storia, i tuoi sogni, e insieme creeremo 
-                                qualcosa di unico e prezioso.
+                                Ogni creazione è unica, come la tua fede. 
+                                Contattaci per una copertina su misura per la tua Bibbia o agenda.
                             </p>
                         </motion.div>
 
@@ -621,7 +569,9 @@
                             }}
                         >
                             <a 
-                                href="mailto:info@bookofgrace.com"
+                                href="https://www.vinted.it/member/209292782-bookofgrace"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 style={{
                                     padding: '1rem 3rem',
                                     background: 'var(--dark)',
@@ -630,7 +580,9 @@
                                     fontSize: '0.8rem',
                                     letterSpacing: '0.15em',
                                     textTransform: 'uppercase',
-                                    transition: 'all 0.3s ease'
+                                    transition: 'all 0.3s ease',
+                                    display: 'inline-block',
+                                    marginBottom: '1rem'
                                 }}
                                 onMouseEnter={(e) => {
                                     e.target.style.background = 'var(--tan)';
@@ -639,7 +591,35 @@
                                     e.target.style.background = 'var(--dark)';
                                 }}
                             >
-                                Scrivici
+                                Visita il nostro Vinted
+                            </a>
+                            
+                            <a 
+                                href="https://www.instagram.com/bookofgrace_"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={{
+                                    padding: '1rem 3rem',
+                                    background: 'transparent',
+                                    color: 'var(--dark)',
+                                    textDecoration: 'none',
+                                    fontSize: '0.8rem',
+                                    letterSpacing: '0.15em',
+                                    textTransform: 'uppercase',
+                                    border: '1px solid var(--dark)',
+                                    transition: 'all 0.3s ease',
+                                    display: 'inline-block'
+                                }}
+                                onMouseEnter={(e) => {
+                                    e.target.style.background = 'var(--dark)';
+                                    e.target.style.color = 'var(--cream)';
+                                }}
+                                onMouseLeave={(e) => {
+                                    e.target.style.background = 'transparent';
+                                    e.target.style.color = 'var(--dark)';
+                                }}
+                            >
+                                Seguici su Instagram
                             </a>
                             
                             <div style={{
@@ -650,16 +630,12 @@
                                 color: 'var(--charcoal)'
                             }}>
                                 <div>
-                                    <p style={{ letterSpacing: '0.1em', marginBottom: '0.3rem', fontWeight: 500 }}>Email</p>
-                                    <p style={{ fontWeight: 300 }}>info@bookofgrace.com</p>
+                                    <p style={{ letterSpacing: '0.1em', marginBottom: '0.3rem', fontWeight: 500 }}>Instagram</p>
+                                    <p style={{ fontWeight: 300 }}>@bookofgrace_</p>
                                 </div>
                                 <div>
-                                    <p style={{ letterSpacing: '0.1em', marginBottom: '0.3rem', fontWeight: 500 }}>Telefono</p>
-                                    <p style={{ fontWeight: 300 }}>+39 055 123 4567</p>
-                                </div>
-                                <div>
-                                    <p style={{ letterSpacing: '0.1em', marginBottom: '0.3rem', fontWeight: 500 }}>Indirizzo</p>
-                                    <p style={{ fontWeight: 300 }}>Via della Pelle 42, Firenze</p>
+                                    <p style={{ letterSpacing: '0.1em', marginBottom: '0.3rem', fontWeight: 500 }}>Vinted</p>
+                                    <p style={{ fontWeight: 300 }}>bookofgrace</p>
                                 </div>
                             </div>
                         </motion.div>
@@ -696,13 +672,13 @@
                     viewport={{ once: true }}
                     transition={{ delay: 0.2 }}
                     style={{
-                        fontSize: '0.7rem',
-                        letterSpacing: '0.2em',
-                        textTransform: 'uppercase',
-                        opacity: 0.6
+                        fontSize: '0.75rem',
+                        fontStyle: 'italic',
+                        opacity: 0.8,
+                        marginBottom: '0.5rem'
                     }}
                 >
-                    Artigianato Italiano dal 1965
+                    "Quando la fede si sposa con l'arte"
                 </motion.p>
                 <motion.p
                     initial={{ opacity: 0 }}
@@ -712,10 +688,10 @@
                     style={{
                         fontSize: '0.65rem',
                         opacity: 0.4,
-                        marginTop: '2rem'
+                        marginTop: '1rem'
                     }}
                 >
-                    © 2024 Book of Grace. Tutti i diritti riservati.
+                    Genesi 1:1
                 </motion.p>
             </footer>
         );
@@ -728,7 +704,7 @@
                     <Hero />
                     <Collection />
                     <Craftsmanship />
-                    <Story />
+                    <Faith />
                     <Contact />
                     <Footer />
                 </div>
